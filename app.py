@@ -1,13 +1,16 @@
 from flask import Flask
 from flask import jsonify
 from operator import itemgetter
+from spacy import load
+import en_core_web_sm
 import pandas as pd
-import spacy
+# import spacy
 
 codes = pd.read_csv('acra_codes.csv')
 app = Flask(__name__)
 
-nlp = spacy.load('en')
+nlp = en_core_web_sm.load()
+# nlp = spacy.load('en')
 
 @app.route('/<string:term>')
 def hello_world(term, codes=codes):
