@@ -20,5 +20,5 @@ def hello_world(term, codes=codes):
         entry['similarity'] = nlp(row.title).similarity(nlp(term))
         distances.append(entry)
 
-    sorted_distances = sorted(distances, key=itemgetter('distance'), reverse=True)
+    sorted_distances = sorted(distances, key=itemgetter('similarity'), reverse=True)
     return jsonify(sorted_distances[0:19])
